@@ -15,15 +15,22 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
-    public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
+   public $basePath = '@webroot';
+	public $baseUrl = '@web';
+	public $css = [
+			'plugins/ladda-bootstrap/dist/ladda-themeless.min.css',
+			'css/flexboxgrid.min.css',
+			'css/ionicons.min.css',
+			'css/animate.css',
+	];
+	public $js = [
+			
+			'plugins/ladda-bootstrap/dist/spin.min.js',
+			'plugins/ladda-bootstrap/dist/ladda.min.js',
+			'js/site.js',
+	]
+	;
+	public $depends = [
+			'yii\web\YiiAsset'
+	];
 }
