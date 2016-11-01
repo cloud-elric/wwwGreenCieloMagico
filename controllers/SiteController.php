@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntUsuarios;
+use app\models\Utils;
+use app\models\ViewTotalPremios;
 
 class SiteController extends Controller {
 	/**
@@ -65,7 +67,11 @@ class SiteController extends Controller {
 	 * @return string
 	 */
 	public function actionIndex() {
-		return $this->render ( 'index' );
+		$premios = ViewTotalPremios::find ()->where ( 'num_premios_sobrantes > 0' )->orderBy ( 'rand()' )->limit ( 3 )->all();
+		
+		return $this->render ( 'index', [ 
+				'premios' => $premios 
+		] );
 	}
 	
 	/**
@@ -82,7 +88,12 @@ class SiteController extends Controller {
 		$usuario = new EntUsuarios ();
 		
 		if ($usuario->load ( Yii::$app->request->post () )) {
-			
+			$usuario->txt_token = Utils::generateToken ( 'usr_' );
+			$usuario->fch_creacion = Utils::getFechaActual ();
+			if ($usuario->save ()) {
+				
+				return $this->redirect ( 'premio' );
+			}
 		}
 		
 		return $this->render ( 'registro', [ 
@@ -95,5 +106,8 @@ class SiteController extends Controller {
 	 */
 	public function actionPremio() {
 		return $this->render ( 'premio' );
+	}
+	public function actionToken($pre = 'prem') {
+		echo Utils::generateToken ( $pre );
 	}
 }
