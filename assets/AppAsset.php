@@ -22,12 +22,14 @@ class AppAsset extends AssetBundle
 			'css/flexboxgrid.min.css',
 			'css/ionicons.min.css',
 			'css/animate.css',
+			'webAssets/css/cieloMagico.css',
 	];
 	public $js = [
 			
 			'plugins/ladda-bootstrap/dist/spin.min.js',
 			'plugins/ladda-bootstrap/dist/ladda.min.js',
 			'js/site.js',
+			'webAssets/js/cieloMagico.js'
 	]
 	;
 	public $depends = [

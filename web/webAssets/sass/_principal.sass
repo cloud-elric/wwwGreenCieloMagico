@@ -1,0 +1,208 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	3.0 - Principal
+
+	-----------------------------------------------------------------------------
+	*/
+
+/*  Principal
+	================================================ */
+.principal
+	background-image: url(../images/principal/bg-principal.png)
+	background-position: 50%
+	background-repeat: no-repeat
+	background-size: cover
+	height: 100vh
+	overflow: hidden
+	position: relative
+	width: 100%
+	// Header
+	.principal-header
+		align-items: center
+		// background-color: rgba($black,.4)
+		display: flex
+		justify-content: flex-start
+		padding: 40px 20px 0
+		position: relative
+		&:after
+			background-color: rgba($black,.4)
+			content: ''
+			height: 180%
+			position: absolute
+			transform-origin: left
+			transform: translateY(-16px) translateX(-80px) rotate(-8deg)
+			width: 130%
+		img
+			position: relative
+			z-index: 1
+		.cielo-magico
+			height: 130px
+			width: auto
+			+respond-to(xs)
+				height: 84px
+			+respond-to(xx)
+				height: 110px
+		.suenos-compartir
+			height: 180px
+			margin-left: 30px
+			+respond-to(xs)
+				height: 140px
+			+respond-to(xx)
+				height: 70px
+	// Texto
+	.principal-texto
+		align-items: center
+		background-color: rgba($black,.4)
+		display: flex
+		justify-content: flex-start
+		margin: 0
+		padding: 60px 90px
+		transform-origin: left
+		transform: translateY(110px) translateX(-40px) rotate(-8deg)
+		width: 150%
+		+respond-to(xs)
+			padding: 40px 74px
+		+respond-to(xx)
+			padding: 20px 60px
+		p
+			// background-color: rgba(red,.3)
+			color: $white
+			font-size: 2.3em
+			font-style: italic
+			font-weight: 700
+			letter-spacing: -2px
+			// margin: 0 auto
+			max-width: 770px
+			text-transform: uppercase
+			width: 60%
+			+respond-to(sm)
+				font-size: 1.7em
+				max-width: 530px
+			+respond-to(xs)
+				font-size: 1.3em
+				max-width: 44%
+			+respond-to(xx)
+				font-size: 1.1em
+				max-width: 100%
+	// Globo
+	.principal-globo
+		position: absolute
+		right: -150px
+		top: -80px
+		+transition(all 0.3s ease-in)
+		+respond-to(lg)
+			width: auto
+		+respond-to(md)
+			width: 444px
+		+respond-to(sm)
+			width: 360px
+		+respond-to(xs)
+			width: 62%
+		+respond-to(xx)
+			top: 23%
+			right: -70px
+			width: 36%
+	// Btn - Juega ahora
+	.principal-btn-juega-ahora
+		background-color: $primary-yellow
+		bottom: 20px
+		+border-radius(40px)
+		color: $black
+		font-size: 1.35em
+		font-weight: bold
+		line-height: 22px
+		left: 50%
+		margin-left: -130px
+		position: absolute
+		width: 260px
+		+respond-to(sm)
+			bottom: 43px
+		+respond-to(xs)
+			bottom: 43px
+			font-size: 1.05em
+			margin-left: -112px
+			width: 224px
+		span
+			display: block
+	// Acepto términos
+	.principal-acepto-terminos
+		// background-color: rgba(green,.3)
+		bottom: 30px
+		color: $white
+		cursor: pointer
+		font-size: 1.1em
+		position: absolute
+		right: 30px
+		text-shadow: 0px 4px 6px rgba($black, 1)
+		+respond-to(sm)
+			bottom: 16px
+			font-size: .95em
+			margin-right: -122px
+			right: 50%
+		+respond-to(xs)
+			bottom: 16px
+			font-size: .95em
+			margin-right: -122px
+			right: 50%
+
+
+/*  Aviso de Privacidad y Terminos y Condiciones
+	================================================ */
+.modal-terminos-condiciones
+	padding: 30px 0
+	.modal-content
+		max-height: 90vh
+		overflow-y: scroll
+		.modal-body
+			h3
+				font-size: 2.2em
+				font-weight: bold
+				margin-bottom: 30px
+				text-transform: uppercase
+			h4
+				font-size: 1.1em
+				margin: 30px 0 10px
+			p
+				margin-bottom: 20px
+				text-align: justify
+				.link
+					color: $primary-yellow
+					text-decoration: underline
+					max-width: 90%
+					word-wrap: break-word 
+					&:hover
+						color: $primary-yellow-light
+			ol
+				// list-style-position: inside
+				// background-color: rgba(red,.1)
+				margin-left: 50px
+				margin-top: 16px
+				li
+					// background-color: rgba(red,.3)
+					margin-bottom: 20px
+					span.text-e
+						font-style: italic
+						text-decoration: underline
+					span.text-M
+						text-transform: uppercase
+					span.text-t
+						display: block
+						font-weight: bold
+			small
+				font-size: .9em
+				font-style: italic
+			table
+				width: 100%
+			table,
+			th,
+			td
+				border: 1px solid #aaa
+				border-collapse: collapse
+			th, td
+				padding: 5px
+				text-align: left
+			th
+				text-align: center
+				&.table-score
+					width: 140px

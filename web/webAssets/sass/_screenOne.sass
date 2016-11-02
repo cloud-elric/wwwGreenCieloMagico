@@ -1,0 +1,128 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	3.0 - Pantalla 1
+
+	-----------------------------------------------------------------------------
+	*/
+
+/*  Pantalla 1
+	================================================ */
+.screen-one
+	background-image: url(../images/screen-one/bg-screen-one.png)
+	background-position: 50%
+	background-repeat: no-repeat
+	background-size: cover
+	height: 100vh
+	overflow: hidden
+	position: relative
+	width: 100%
+	// Header
+	.screen-one-header
+		align-items: center
+		// background-color: rgba($black,.4)
+		display: flex
+		justify-content: space-around
+		padding: 20px 20px 0
+		position: relative
+		+respond-to(lg)
+			margin-bottom: 10px
+		+respond-to(md)
+			margin-bottom: 10px
+		+respond-to(sm)
+			justify-content: space-between
+			margin-bottom: 10px
+		+respond-to(xs)
+			margin-bottom: 10px
+		.screen-one-header-logos
+			align-items: center
+			display: flex
+			justify-content: center
+			+respond-to(xs)
+				flex-wrap: wrap
+			img
+				position: relative
+				z-index: 1
+			.cielo-magico
+				height: 130px
+				width: auto
+				+respond-to(sm)
+					height: 80px
+				+respond-to(xs)
+					height: 70px
+					margin-bottom: 10px
+				+respond-to(xx)
+					height: 60px
+					margin-bottom: 8px
+			.suenos-compartir
+				height: 160px
+				margin-left: 30px
+				+respond-to(sm)
+					height: 100px
+				+respond-to(xs)
+					height: 80px
+				+respond-to(xx)
+					height: 60px
+		// Mecánica
+		.screen-one-header-mecanica
+			color: $white
+			max-width: 370px
+			+respond-to(xs)
+				max-width: 280px
+			h2
+				font-size: 2em
+				margin-bottom: 20px
+				+respond-to(sm)
+					font-size: 1.8em
+					margin-bottom: 16px
+				+respond-to(xs)
+					font-size: 1.4em
+					margin-bottom: 10px
+			ol
+				margin-left: 20px
+	// Globos
+	.screen-one-globos
+		align-items: center
+		// background-color: rgba(pink,.4)
+		display: flex
+		justify-content: space-around
+		height: calc(100vh - 280px)
+		margin: 0 auto
+		max-width: 800px
+		position: relative
+		+respond-to(sm)
+			height: calc(100vh - 240px)
+			max-width: 800px
+		+respond-to(xs)
+			height: calc(100vh - 270px)
+			max-width: 800px
+			width: 98%
+		+respond-to(xx)
+			height: calc(100vh - 350px)
+		.screen-one-globos-item
+			height: 100%
+			img
+				height: 100%
+	// Btn - Juega ahora
+	.screen-one-btn-canjea-premio
+		background-color: $primary-yellow
+		bottom: 10px
+		+border-radius(40px)
+		color: #000
+		font-size: 1.35em
+		font-weight: bold
+		line-height: 22px
+		left: 50%
+		margin-left: -130px
+		padding: 1rem
+		position: absolute
+		width: 260px
+		+respond-to(sm)
+			padding: .7rem 1rem
+		+respond-to(xs)
+			font-size: 1em
+			margin-left: -100px
+			padding: .3rem 1rem
+			width: 200px
+		span
+			display: block
