@@ -30,7 +30,7 @@ use yii\helpers\Url;
 	<img class="principal-globo" src="<?=Url::base()?>/webAssets/images/principal/globo.png" alt="Globo">
 
 	<!-- .principal-btn-juega-ahora -->
-	<button class="btn principal-btn-juega-ahora">¡Juega ahora! <span>Todos tienen premio</span></button>
+	<a class="btn principal-btn-juega-ahora" href="site/concursar">¡Juega ahora! <span>Todos tienen premio</span></a>
 	<!-- end - .principal-btn-juega-ahora -->
 	
 	<!-- .principal-acepto-terminos -->
