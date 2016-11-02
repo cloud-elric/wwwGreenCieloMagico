@@ -28,8 +28,59 @@ $(document).ready(function(){
 		 validarSoloNumeros(e);
 	    });
 	 
+	 $('.js-balloon').on('click', function(e){
+		 var audio = new Audio('../webAssets/audio/audio.mp3');
+		 audio.play();
+		 
+		 var offset = $(this).offset();
+		   
+		 pop((e.pageX - offset.left)+50, (e.pageY - offset.top)-20, 13, $(this));
+	 });
 	
 });
+
+function r2d(x) {
+    return x / (Math.PI / 180);
+  }
+
+  function d2r(x) {
+    return x * (Math.PI / 180);
+  }
+
+  function pop(start_x, start_y, particle_count, elemento) {
+    arr = [];
+    angle = 0;
+    particles = [];
+    offset_x = elemento.next(".debris").width() / 2;
+    offset_y = elemento.next(".debris").height() / 2;
+
+    for (i = 0; i < particle_count; i++) {
+      rad = d2r(angle);
+      x = Math.cos(rad)*(80+Math.random()*20);
+      y = Math.sin(rad)*(80+Math.random()*20);
+      arr.push([start_x + x, start_y + y]);
+      z = $('<div class="debris" ></div>');
+      z.css({
+          "left": start_x - offset_x,
+          "top": start_y - offset_x
+      }).appendTo(elemento.parents(".content"));
+      particles.push(z);
+      angle += 360/particle_count;
+    }
+    
+    $.each(particles, function(i, v){
+      $(v).show();
+      $(v).animate(
+        {
+          top: arr[i][1], 
+          left: arr[i][0],
+          width: 4, 
+          height: 4, 
+          opacity: 0
+        }, 600, function(){$(v).remove()
+      });
+    });
+  }
 
 function validarSoloNumeros(e){
 	 // Allow: backspace, delete, tab, escape, enter and .

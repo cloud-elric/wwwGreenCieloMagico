@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
 			'css/ionicons.min.css',
 			'css/animate.css',
 			'webAssets/css/cieloMagico.css',
+			'css/animacionGlobos.css'
 	];
 	public $js = [
 			

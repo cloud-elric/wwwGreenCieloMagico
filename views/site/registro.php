@@ -21,7 +21,7 @@ use yii\helpers\Html;
 		],
 		'errorCssClass' => 'invalid' ]); ?>
 
-			<?= $form->field($usuario, 'txt_nombre', ['options'=>['class'=>'input-field col s12'], ['template'=>'{input}{label}']])->textInput(['autofocus' => true])-> textInput(["placeholder" => "Nombre"])?>
+			<?= $form->field($usuario, 'txt_nombre')->textInput(['autofocus' => true])-> textInput(["placeholder" => "Nombre"])?>
 	
 			<?= $form->field($usuario, 'txt_apellido_paterno',['options'=>['class'=>'animated']]) -> textInput(["placeholder" => "Apellido paterno", "class"=>"input-short animateds"])?>
 			
