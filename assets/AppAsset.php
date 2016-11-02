@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
 	public $css = [
 			'plugins/ladda-bootstrap/dist/ladda-themeless.min.css',
 			'css/flexboxgrid.min.css',
-			'css/ionicons.min.css',
+			'webAssets/plugins/ionicons/css/ionicons.min.css',
 			'css/animate.css',
 			'webAssets/css/cieloMagico.css',
 	];
