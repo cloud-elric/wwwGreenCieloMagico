@@ -7,6 +7,7 @@ use yii\helpers\Url;
 
 ?>
 
+
 <!-- .principal -->
 <div class="principal">
 	
