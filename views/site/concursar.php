@@ -72,17 +72,44 @@ $form = ActiveForm::begin ( [
 	</div>
 	<!-- end - .screen-one-globos -->
 
-	<!-- .screen-one-btn-canjea-premio -->
-	<?= Html::submitButton('<span class="ladda-label">Canjea tu premio</span>', ['id'=>'js-canjea-tu-premio', 'class' => 'btn screen-one-btn-canjea-premio ladda-button', 'data-style'=>'zoom-out'])?>
-	<!-- end - .screen-one-btn-canjea-premio -->
-
 </div>
 <!-- end - .screen-one -->
 
 
 
 
+<!-- .modal -->
+<div id="modal-consursar" class="modal modal-consursar">
 
+	<!-- .modal-content -->
+	<div class="modal-content">
+
+		<!-- .modal-header -->
+		<!-- <div class="modal-header">
+			<span class="close" id="modal-consursar-close">×</span>
+			<h2>Términos y condiciones</h2>
+		</div> -->
+		<!-- end - .modal-header -->
+
+		<!-- .modal-body -->
+		<div class="modal-body">
+			
+			<h3>¡Felicidades! <span>Haz ganado</span></h4>
+
+			<h2>Pluma dorada para BOOK'S</h2>
+
+			<!-- .screen-one-btn-canjea-premio -->
+			<?= Html::submitButton('<span class="ladda-label">Canjea tu premio</span>', ['id'=>'js-canjea-tu-premio', 'class' => 'btn screen-one-btn-canjea-premio ladda-button', 'data-style'=>'zoom-out'])?>
+			<!-- end - .screen-one-btn-canjea-premio -->
+
+		</div>
+		<!-- end - .modal-body -->
+
+	</div>
+	<!-- end - .modal-content -->
+
+</div>
+<!-- end - .modal -->
 
 <?php ActiveForm::end(); ?>
 
