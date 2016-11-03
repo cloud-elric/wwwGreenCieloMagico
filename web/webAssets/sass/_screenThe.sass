@@ -1,0 +1,175 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	3.0 - Pantalla 3
+
+	-----------------------------------------------------------------------------
+	*/
+
+/*  Pantalla 3
+	================================================ */
+.screen-the
+	align-items: center
+	background-image: url(../images/screen-the/bg-screen-the.png)
+	background-position: 50%
+	background-repeat: no-repeat
+	background-size: cover
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+	height: 100vh
+	overflow: hidden
+	position: relative
+	width: 100%
+	+respond-to(sm)
+		justify-content: center
+	+respond-to(xs)
+		justify-content: center
+	// Globo
+	.screen-the-globo
+		position: absolute
+		right: 4%
+		top: 0
+		z-index: 1
+		+respond-to(sm)
+			opacity: .8
+		+respond-to(xs)
+			opacity: .6
+		+respond-to(xx)
+			opacity: .4
+	// Header
+	.screen-the-header
+		align-items: center
+		// background-color: rgba($black,.4)
+		display: flex
+		justify-content: flex-start
+		padding: 20px 60px 0
+		position: relative
+		width: 100%
+		z-index: 2
+		+respond-to(xs)
+			padding: 20px 30px 0
+		+respond-to(xs)
+			padding: 20px 18px 0
+		img
+			position: relative
+			z-index: 1
+		.cielo-magico
+			height: 130px
+			width: auto
+			+respond-to(xs)
+				height: 110px
+			+respond-to(xx)
+				height: 90px
+		.suenos-compartir
+			height: 180px
+			margin-left: 30px
+			+respond-to(xs)
+				height: 130px
+			+respond-to(xx)
+				height: 70px
+	// Contenido
+	.screen-the-contenido
+		align-self: flex-start
+		// background-color: rgba(red,.2)
+		color: $white
+		margin-left: 6%
+		max-width: 530px
+		position: relative
+		text-align: center
+		width: 100%
+		z-index: 2
+		+respond-to(sm)
+			margin-left: 0
+		+respond-to(xs)
+			margin-left: 0
+		h3
+			font-size: 4.6em
+			font-weight: 700
+			+respond-to(xs)
+				font-size: 3.6em
+			+respond-to(xx)
+				font-size: 2.5em
+		h4
+			font-size: 1.35em
+			font-weight: 700
+			+respond-to(xs)
+				font-size: 1.05em
+			+respond-to(xx)
+				font-size: 1em
+		// Código
+		.screen-the-contenido-codigo
+			margin-top: 40px
+			text-align: center
+			span
+				color: $primary-yellow
+				display: block
+				font-size: 1.8em
+				font-weight: 700
+				text-transform: uppercase
+				+respond-to(xs)
+					font-size: 1.4em
+			p
+				font-size: 2.5em
+				font-weight: 400
+				margin-top: 4px
+				text-transform: uppercase
+				+respond-to(xs)
+					font-size: 2em
+	// Footer
+	.screen-the-foooter
+		align-items: center
+		// background-color: rgba(green,.4)
+		display: flex
+		justify-content: space-around
+		position: relative
+		width: 100%
+		z-index: 2
+		+respond-to(xx)
+			flex-wrap: wrap
+			justify-content: center
+		.screen-the-foooter-facebook
+			align-items: center
+			color: $white
+			display: flex
+			justify-content: space-around
+			+respond-to(xs)
+				justify-content: flex-start
+				width: 40%
+			+respond-to(xx)
+				justify-content: center
+				width: 90%
+			i
+				align-items: center
+				background-color: #3B64A3
+				+border-radius(50%)
+				color: $white
+				display: flex
+				font-size: 1.8em
+				justify-content: center
+				height: 40px
+				width: 40px
+			span
+				font-size: 1.6em
+				margin-left: 8px
+				+respond-to(xs)
+					font-size: 1.1em
+		.screen-the-foooter-nota
+			align-items: center
+			color: $white
+			display: flex
+			justify-content: flex-end
+			+respond-to(xs)
+				width: 50%
+			+respond-to(xx)
+				justify-content: center
+				margin-top: 10px
+				width: 90%
+			p
+				font-size: 1.05em
+				font-weight: 400
+				max-width: 440px
+				text-align: justify
+				+respond-to(xs)
+					font-size: 1em
+					max-width: auto
