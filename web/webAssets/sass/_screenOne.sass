@@ -87,9 +87,13 @@
 		display: flex
 		justify-content: space-around
 		height: calc(100vh - 280px)
-		margin: 0 auto
-		max-width: 800px
+		margin: 6vh auto 0
+		// max-width: 800px
 		position: relative
+		+respond-to(lg)
+			max-width: 1200px
+		+respond-to(md)
+			max-width: 1024px
 		+respond-to(sm)
 			height: calc(100vh - 240px)
 			max-width: 800px
@@ -142,31 +146,62 @@
 			// 	&:before  
 			// 		color: @gps-skyblue 
  
-	// Btn - Juega ahora
-	.screen-one-btn-canjea-premio
-		background-color: $primary-yellow
-		bottom: 10px
-		+border-radius(40px)
-		color: #000
-		font-size: 1.35em
-		font-weight: bold
-		line-height: 22px
-		left: 50%
-		margin-left: -130px
-		padding: 1rem
-		position: absolute
-		width: 260px
-		+respond-to(sm)
-			padding: .7rem 1rem
-		+respond-to(xs)
-			font-size: 1em
-			margin-left: -100px
-			padding: .3rem 1rem
-			width: 200px
-		span
-			display: block
+			
 
 
+.modal-consursar
+	.modal-content
+		+border-radius(4px)
+		.modal-header
+		// Body
+		.modal-body
+			text-align: center
+			h2
+				color: $primary-yellow
+				font-weight: 700
+				line-height: 1
+				+respond-to(lg)
+					font-size: 5em
+				+respond-to(md)
+					font-size: 4.6em
+				+respond-to(sm)
+					font-size: 4em
+				+respond-to(xs)
+					font-size: 3em
+				+respond-to(xx)
+					font-size: 2.1em
+			h3
+				font-weight: 700
+				line-height: 1
+				margin-bottom: 30px
+				span
+					display: block
+					opacity: .9
+				+respond-to(lg)
+					font-size: 4em
+				+respond-to(md)
+					font-size: 3.6em
+				+respond-to(sm)
+					font-size: 3em
+				+respond-to(xs)
+					font-size: 2em
+				+respond-to(xx)
+					font-size: 1.7em
+			// Btn - Juega ahora
+			.screen-one-btn-canjea-premio
+				background-color: $primary-yellow
+				+border-radius(40px)
+				color: #000
+				font-size: 1.15em
+				font-weight: bold
+				line-height: 22px
+				margin-top: 40px
+				padding: .6rem 2rem
+				+respond-to(sm)
+					padding: .7rem 1rem
+				+respond-to(xs)
+					font-size: 1em
+					padding: .3rem 1rem
 
 
 // /*BALLOON 1 4*/

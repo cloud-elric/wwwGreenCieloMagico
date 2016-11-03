@@ -20,6 +20,12 @@ var modalTerminosCondiciones = document.getElementById('modal-terminos-condicion
 var closeTerminosCondiciones = document.getElementById('modal-terminos-condiciones-close');
 var openTerminosCondiciones = document.getElementById('modal-terminos-condiciones-open');
 
+
+// modal concursar - felicidades ganaste
+var modalWin = document.getElementById('modal-consursar');
+var closeWin = document.getElementById('modal-consursar-close');
+var openWin = document.getElementById('modal-consursar-open');
+
 /**
  * ----------------------------
  *		Document Ready
@@ -73,7 +79,9 @@ $(document).ready(function(){
 	});
 
 
-	// Principal 
+	// 
+	// Principal
+	//
 	/**
 	 * Click - Mostar terminos y condiciones (Principal)
 	 */
@@ -120,7 +128,9 @@ $(document).ready(function(){
 
 
 
+	// 
 	// Registro
+	//
 	/**
 	 * Click - Mostar terminos y condiciones (Registro)
 	 */
@@ -165,6 +175,18 @@ $(document).ready(function(){
 		}
 	}
 
+	// 
+	// Consursar
+	// 
+	function openModalWin() {
+		modalWin.style.display = "flex";
+	}
+	
+	// Close Modal
+	$(closeWin).on("click", function(){
+		modalWin.style.display = "none";
+	});
+
 
 }); // end - READY
 
@@ -181,5 +203,10 @@ window.onclick = function(event) {
 	// Modal Agregar - Close
 	if (event.target == modalTerminosCondiciones) {
 		modalTerminosCondiciones.style.display = "none";
+	}
+
+	// Modal Consurar - Close
+	if (event.target == modalWin) {
+		modalWin.style.display = "none";
 	}
 }
