@@ -27,9 +27,10 @@
   transform: scale(2, 2);
 }
 
+
 .debris {
  display: none;   
- position: absolute;
+ position: fixed;
  width: 28px;
  height: 28px;
  background-color: #ff00ff;

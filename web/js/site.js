@@ -33,8 +33,12 @@ $(document).ready(function(){
 		 audio.play();
 		 
 		 var offset = $(this).offset();
-		   
-		 pop((e.pageX - offset.left)+50, (e.pageY - offset.top)-20, 13, $(this));
+		 var color = $(this).data('color');
+		 
+		 $(this).hide();
+		 
+		 pop(e.pageX, e.pageY, 13, $(this), color);
+		 
 	 });
 	
 });
@@ -47,22 +51,25 @@ function r2d(x) {
     return x * (Math.PI / 180);
   }
 
-  function pop(start_x, start_y, particle_count, elemento) {
+  function pop(start_x, start_y, particle_count, elemento, color) {
     arr = [];
     angle = 0;
     particles = [];
+   
     offset_x = elemento.next(".debris").width() / 2;
     offset_y = elemento.next(".debris").height() / 2;
 
+    
     for (i = 0; i < particle_count; i++) {
       rad = d2r(angle);
-      x = Math.cos(rad)*(80+Math.random()*20);
-      y = Math.sin(rad)*(80+Math.random()*20);
+      x = Math.cos(rad)*(200+Math.random()*20);
+      y = Math.sin(rad)*(200+Math.random()*20);
       arr.push([start_x + x, start_y + y]);
       z = $('<div class="debris" ></div>');
       z.css({
           "left": start_x - offset_x,
-          "top": start_y - offset_x
+          "top": start_y - offset_x,
+          "background-color": color
       }).appendTo(elemento.parents(".content"));
       particles.push(z);
       angle += 360/particle_count;
@@ -77,7 +84,7 @@ function r2d(x) {
           width: 4, 
           height: 4, 
           opacity: 0
-        }, 600, function(){$(v).remove()
+        }, 900, function(){$(v).remove()
       });
     });
   }
