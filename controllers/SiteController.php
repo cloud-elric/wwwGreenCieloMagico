@@ -95,20 +95,20 @@ class SiteController extends Controller {
 					
 					if ($premioUsuario->save ()) {
 						
-						$link = Yii::$app->urlManager->createAbsoluteUrl ( [
-								'site/premio?token=' . $premioUsuario->txt_codigo
+						$link = Yii::$app->urlManager->createAbsoluteUrl ( [ 
+								'site/premio?token=' . $premioUsuario->txt_codigo 
 						] );
 						
 						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$link);
 						$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
-							
+						
 						$sms = file_get_contents ( $url );
 						
-						return $this->redirect ( ['premio',
+						return $this->redirect ( [ 
+								'premio',
 								'token' => $premioUsuario->txt_codigo 
 						] );
 					}
-					
 				}
 			}
 			
@@ -122,6 +122,43 @@ class SiteController extends Controller {
 				'premios' => $premios,
 				'premioSeleccionado' => $premioSeleccionado 
 		] );
+	}
+	public function actionTest() {
+		$link = Yii::$app->urlManager->createAbsoluteUrl ( [ 
+				'site/premio?token=' . substr ( md5 ( microtime () ), 1, 10 ) 
+		] );
+		
+		echo $this->getShortUrl ( $link );
+	}
+	
+	/**
+	 * Obtiene un short url a partir de una url dada
+	 * 
+	 * @param unknown $url        	
+	 */
+	private function getShortUrl($url) {
+		$urlAutenticate = 'http://localhost/shortUrl';
+		
+		$ch = curl_init ();
+		
+		curl_setopt ( $ch, CURLOPT_URL, $urlAutenticate );
+		curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
+		curl_setopt ( $ch, CURLOPT_POSTFIELDS, 'user=userCieloMagico&pass=passPCieloMagico&app=cieloMagico&url=' . $url );
+		curl_setopt($ch, CURLOPT_POSTREDIR, 3);
+		curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
+		
+		// in real life you should use something like:
+		// curl_setopt($ch, CURLOPT_POSTFIELDS,
+		// http_build_query(array('postvar1' => 'value1')));
+		
+		// receive server response ...
+		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		
+		$server_output = curl_exec ( $ch );
+		
+		curl_close ( $ch );
+		
+		return $server_output;
 	}
 	
 	/**
@@ -154,7 +191,7 @@ class SiteController extends Controller {
 	
 	/**
 	 * Busca el premio por el token
-	 * 
+	 *
 	 * @param unknown $token        	
 	 * @throws NotFoundHttpException
 	 * @return unknown
@@ -176,7 +213,7 @@ class SiteController extends Controller {
 	public function actionPremio($token) {
 		$usuarioPremio = RelUsuariosPremio::find ()->where ( [ 
 				'txt_codigo' => $token 
-		] )->one();
+		] )->one ();
 		
 		if (empty ( $usuarioPremio )) {
 			throw new NotFoundHttpException ( 'The requested page does not exist.h' );
