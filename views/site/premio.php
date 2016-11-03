@@ -23,12 +23,12 @@ use yii\helpers\Html;
 	<!-- .screen-the-contenido -->
 	<div class="screen-the-contenido">
 		<h3>¡Felicidades!</h3>
-		<h4>Haz ganado (espacio para poner el premio)</h4>
+		<h4>Haz ganado un <?=$usuarioPremio->idPremio->txt_nombre?></h4>
 		
 		<!-- .screen-the-contenido-codigo -->
 		<div class="screen-the-contenido-codigo">
 			<span>Código</span>
-			<p>d6248d</p>
+			<p><?=$usuarioPremio->txt_codigo?></p>
 		</div>
 		<!-- end - .screen-the-contenido-codigo -->
 	</div>

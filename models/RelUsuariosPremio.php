@@ -10,6 +10,9 @@ use Yii;
  * @property string $id_usuario
  * @property string $id_premio
  * @property string $txt_codigo
+ *
+ * @property EntUsuarios $idUsuario
+ * @property EntPremios $idPremio
  */
 class RelUsuariosPremio extends \yii\db\ActiveRecord
 {
@@ -30,6 +33,8 @@ class RelUsuariosPremio extends \yii\db\ActiveRecord
             [['id_usuario', 'id_premio', 'txt_codigo'], 'required'],
             [['id_usuario', 'id_premio'], 'integer'],
             [['txt_codigo'], 'string', 'max' => 20],
+            [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => EntUsuarios::className(), 'targetAttribute' => ['id_usuario' => 'id_usuario']],
+            [['id_premio'], 'exist', 'skipOnError' => true, 'targetClass' => EntPremios::className(), 'targetAttribute' => ['id_premio' => 'id_premio']],
         ];
     }
 
@@ -43,5 +48,21 @@ class RelUsuariosPremio extends \yii\db\ActiveRecord
             'id_premio' => 'Id Premio',
             'txt_codigo' => 'Txt Codigo',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdUsuario()
+    {
+        return $this->hasOne(EntUsuarios::className(), ['id_usuario' => 'id_usuario']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdPremio()
+    {
+        return $this->hasOne(EntPremios::className(), ['id_premio' => 'id_premio']);
     }
 }
