@@ -99,10 +99,10 @@ class SiteController extends Controller {
 						return $this->redirect ( 'premio' );
 					}
 					
-// 					$message = urlencode ( 'Felicidades haz ganado: '.$premio->txt_nombre.". Tu codigo de ganador es:" .$premioUsuario->txt_codigo);
-// 					$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
+					$message = urlencode ( 'Felicidades haz ganado: '.$premio->txt_nombre.". Tu codigo de ganador es:" .$premioUsuario->txt_codigo);
+					$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
 						
-// 					$sms = file_get_contents ( $url );
+					$sms = file_get_contents ( $url );
 						
 					
 				}

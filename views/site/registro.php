@@ -40,6 +40,7 @@ use yii\helpers\Html;
 		],
 		'errorCssClass' => 'invalid' ]); ?>
 
+
 			<?= $form->field($usuario, 'txt_nombre', ['options'=>['class'=>'form-group animated']])->textInput(['autofocus' => true])-> textInput(["placeholder" => "Nombre" , "class"=>"col-xs-12 col-sm-8"])?>
 
 			<?= $form->field($usuario, 'txt_apellido_paterno',['options'=>['class'=>'form-group animated']]) -> textInput(["placeholder" => "Apellido paterno", "class"=>"col-xs-12 col-sm-8"])?>
