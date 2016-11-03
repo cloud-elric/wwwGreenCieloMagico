@@ -285,13 +285,13 @@ hr
 
 // Close Button
 .close 
-	color: white
+	color: $white
 	float: right
 	font-size: 28px
 	font-weight: bold
 	&:hover,
 	&:focus 
-		color: #CCC
+		color: #F2F2F2
 		text-decoration: none
 		cursor: pointer
 
@@ -317,19 +317,23 @@ hr
 	.aceptar-terminos-condiciones-btn
 		background-color: #CCC
 		+border-radius(2px)
-		display: inline-block
-		margin-top: 20px
-		padding: 8px 20px
+		bottom: 40px
 		cursor: pointer
-		position: fixed
-		bottom: 44px
+		display: inline-block
 		left: 50%
 		margin-left: -140px
+		padding: 8px 20px
+		position: fixed
+		width: 320px
 		z-index: 99999
 		&:hover
 			background-color: #c3c3c3
-		@include respond-to(xs)
+		+respond-to(xs)
+			margin-left: -40%
 			text-align: center
+			width: 80%
+		+respond-to(xX)
+			bottom: 23px
 
 
 /*  Delay

@@ -28,13 +28,33 @@ use yii\helpers\Url;
 
 	<!-- .principal-globo -->
 	<img class="principal-globo" src="<?=Url::base()?>/webAssets/images/principal/globo.png" alt="Globo">
+	
+	<!-- .principal-check-terminos -->
+	<div class="principal-check-terminos">
+
+		<ul class="list">
+			<li class="list__item">
+				<label class="label--checkbox">
+						
+					<div class="label--checkbox-row">
+						<div class="label--checkbox-row-col">
+							<input type="checkbox" id="checkbox" class="checkbox">
+						</div>
+						<div class="label--checkbox-row-col">
+							<span>Acepto Términos y Condiciones</span>
+						</div>
+					</div>
+				</label>
+			</li>
+		</ul>
+		<div class="principal-aceptar-mask"></div>
+
+	</div>
 
 	<!-- .principal-btn-juega-ahora -->
-	<a class="btn principal-btn-juega-ahora" href="site/concursar">¡Juega ahora! <span>Todos tienen premio</span></a>
+	<!-- <a class="btn principal-btn-juega-ahora" href="site/concursar">¡Juega ahora! <span>Todos tienen premio</span></a> -->
+	<button class="btn principal-btn-juega-ahora ladda-button" id="principal-btn-juega-ahora" data-style="zoom-out"><span class="ladda-label">¡Juega ahora! <span>Todos tienen premio</span></span></button>
 	<!-- end - .principal-btn-juega-ahora -->
-	
-	<!-- .principal-acepto-terminos -->
-	<p class="principal-acepto-terminos" id="modal-terminos-condiciones-open">Acepto Términos y Condiciones</p>
 
 </div>
 <!-- end - .principal -->
@@ -349,6 +369,9 @@ use yii\helpers\Url;
 			<p>
 				En caso de queja derivada de LA PROMOCIÓN, favor de acudir a la Procuraduría Federal del Consumidor (PROFECO) ubicada en Av. José Vasconcelos No. 208, Piso 9, Col. Condesa, Del. Cuauhtémoc, C.P. 06140, México, D.F. o bien comunicarse a los teléfonos: (55) 5256 0854 y 5256 1284 de lunes a viernes de 09:00 a 18:00 horas.
 			</p>
+
+			<span class="aceptar-terminos-condiciones-btn"> Acepto los
+							términos y condiciones </span>
 
 		</div>
 		<!-- end - .modal-body -->

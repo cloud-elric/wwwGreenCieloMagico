@@ -38,10 +38,14 @@ $(document).ready(function(){
 	// $('.animsition').animsition();
 
 
+	// Deshabilitar btn de Juega ahora (Principal)
+	$("#principal-btn-juega-ahora").attr("disabled", "disabled");
+	// Deshabilitar btn de Juega ahora (Registro)
+	$("#js-submit-form").attr("disabled", "disabled");
+
 	/**
 	 * Ladda
 	 */
-
 	$('.home-article-button').click(function(e){
 
 		var l = Ladda.create(this);
@@ -67,6 +71,100 @@ $(document).ready(function(){
 		$(".form-registro").show();
 		$(".form-registro .animated").each(function(index) {$( this ).addClass("delay-"+(index)+" fadeInUp");});
 	});
+
+
+	// Principal 
+	/**
+	 * Click - Mostar terminos y condiciones (Principal)
+	 */
+	$(".principal-aceptar-mask").on("click", function(){
+		modalTerminosCondiciones.style.display = "flex";
+	});
+
+	/**
+	 * Click - Boton de Aceptar terminos y condiciones (Principal)
+	 */
+	$(".aceptar-terminos-condiciones-btn").on("click", function(){
+		$(".principal-aceptar-mask").hide();
+		$("#principal-btn-juega-ahora").prop('disabled', false);
+		$("#checkbox").prop( "checked", true );
+		modalTerminosCondiciones.style.display = "none";
+	});
+
+	/**
+	 * Click - Checkbox (true/false) (Principal)
+	 */
+	$("#checkbox").click(function() {
+		estadoCheckedPrincipal();
+	});
+
+	/**
+	 * OnChange - Checkbox (true/false) (Principal)
+	 */
+	$("#checkbox").change(function() {
+		estadoCheckedPrincipal();
+	});
+
+
+	/**
+	 * Function - Checkbox (true/false) (Principal)
+	 */
+	function estadoCheckedPrincipal(){
+		if($("#checkbox").is(':checked')) {
+			$("#principal-btn-juega-ahora").prop('disabled', false);
+		} else {
+			$(".principal-aceptar-mask").show();
+			$("#principal-btn-juega-ahora").prop('disabled', true);
+		}
+	}
+
+
+
+	// Registro
+	/**
+	 * Click - Mostar terminos y condiciones (Registro)
+	 */
+	$(".registro-aceptar-mask").on("click", function(){
+		modalTerminosCondiciones.style.display = "flex";
+	});
+
+	/**
+	 * Click - Boton de Aceptar terminos y condiciones (Registro)
+	 */
+	$(".aceptar-terminos-condiciones-btn-registro").on("click", function(){
+		$(".registro-aceptar-mask").hide();
+		$("#js-submit-form").prop('disabled', false);
+		$("#checkbox-registro").prop( "checked", true );
+		modalTerminosCondiciones.style.display = "none";
+
+	});
+
+	/**
+	 * Click - Checkbox (true/false) (Principal)
+	 */
+	$("#checkbox-registro").click(function() {
+		estadoCheckedRegistro();
+	});
+
+	/**
+	 * OnChange - Checkbox (true/false) (Principal)
+	 */
+	$("#checkbox-registro").change(function() {
+		estadoCheckedRegistro();
+	});
+
+	/**
+	 * Function - Checkbox (true/false) (Registro)
+	 */
+	function estadoCheckedRegistro(){
+		if($("#checkbox-registro").is(':checked')) {
+			$("#js-submit-form").prop('disabled', false);
+		} else {
+			$(".registro-aceptar-mask").show();
+			$("#js-submit-form").prop('disabled', true);
+		}
+	}
+
 
 }); // end - READY
 

@@ -71,7 +71,7 @@ foreach($premios as $premio){
 			<?= $form->field($premioSeleccionado, 'txt_token')->hiddenInput() -> label(false)?>
 	
 			
-			<?= Html::submitButton('<span class="ladda-label">Registrar</span>', ['id'=>'js-submit-form', 'class' => 'btn btn-primary js-btn-registrar ladda-button animated', 'name' => 'contact-button', 'data-style'=>'zoom-out'])?>
+			<?= Html::submitButton('<span class="ladda-label">Registrar</span>', ['id'=>'js-submit-forms', 'class' => 'btn btn-primary js-btn-registrar ladda-button animated', 'name' => 'contact-button', 'data-style'=>'zoom-out'])?>
 
 
 <?php ActiveForm::end(); ?>
