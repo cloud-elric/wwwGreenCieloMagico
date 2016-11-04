@@ -163,9 +163,9 @@ class SiteController extends Controller {
 		}
 		
 		if (empty ( $premios )) {
-			return $this->render ( [ 
+			return $this->render ( 
 					'sinPremios' 
-			] );
+			);
 		}
 		
 		$apartarPremio = new WrkPremiosGanados ();

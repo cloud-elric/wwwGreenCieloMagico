@@ -38,10 +38,10 @@ use yii\helpers\Html;
 	<div class="screen-the-foooter">
 		
 		<!-- .screen-the-foooter-facebook -->
-		<div class="screen-the-foooter-facebook">
+		<a class="screen-the-foooter-facebook" href="http://www.facebook.com/ParticipaGanaOficial" target="_blank">
 			<i class="ion ion-social-facebook"></i>
 			<span>ParticipaGana</span>
-		</div>
+		</a>
 		<!-- end - .screen-the-foooter-facebook -->
 
 		<!-- .screen-the-foooter-nota -->
