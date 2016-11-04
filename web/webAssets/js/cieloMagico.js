@@ -37,6 +37,16 @@ var openWin = document.getElementById('modal-consursar-open');
  */
 $(document).ready(function(){
 
+	$("#entusuarios-fch_nacimiento").datepicker({
+		  dateFormat: "dd-mm-yy",
+		  changeMonth: true,
+	      changeYear: true,
+	      yearRange: "1910:2005",
+	      
+	});
+	
+	
+	$( "#entusuarios-fch_nacimiento" ).datepicker( "setDate", "01-01-1990" );
 	$("#checkbox").prop( "checked", false );
 	
 	/**

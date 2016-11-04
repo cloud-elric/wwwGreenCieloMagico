@@ -102,6 +102,7 @@ class SiteController extends Controller {
 			
 			if ($usuario->load ( Yii::$app->request->post () )) {
 				$usuario->txt_token = Utils::generateToken ( 'usr_' );
+				$usuario->fch_nacimiento = Utils::changeFormatDateInput($usuario->fch_nacimiento);
 				$usuario->fch_creacion = Utils::getFechaActual ();
 				if ($usuario->save ()) {
 					

@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
    public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [
+			'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
 			'plugins/ladda-bootstrap/dist/ladda-themeless.min.css',
 			'css/flexboxgrid.min.css',
 			'webAssets/plugins/ionicons/css/ionicons.min.css',
@@ -30,7 +31,9 @@ class AppAsset extends AssetBundle
 			'plugins/ladda-bootstrap/dist/spin.min.js',
 			'plugins/ladda-bootstrap/dist/ladda.min.js',
 			'js/site.js',
-			'webAssets/js/cieloMagico.js'
+			'webAssets/js/cieloMagico.js',
+			'https://code.jquery.com/ui/1.12.1/jquery-ui.js'
+			
 	]
 	;
 	public $depends = [

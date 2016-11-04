@@ -15,6 +15,7 @@ use Yii;
  * @property string $txt_apellido_paterno
  * @property string $tel_numero_celular
  * @property string $fch_creacion
+ * @property string $fch_nacimiento
  */
 class EntUsuarios extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class EntUsuarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['txt_token', 'txt_nombre', 'txt_cp', 'txt_apellido_paterno', 'tel_numero_celular','fch_nacimiento'], 'required'],
+            [['txt_token', 'txt_nombre', 'txt_cp', 'txt_apellido_paterno', 'tel_numero_celular','fch_nacimiento','txt_email'], 'required', 'message'=>'Campo requerido'],
             [['fch_creacion'], 'safe'],
         	['txt_email', 'email', 'message'=>'Ingrese una dirección válida'],
             [['txt_token'], 'string', 'max' => 60],
