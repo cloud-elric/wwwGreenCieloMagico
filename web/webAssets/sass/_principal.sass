@@ -17,8 +17,10 @@
 	overflow: hidden
 	position: relative
 	width: 100%
-	display: flex
-	flex-direction: column
+	// flex-direction: column
+	&.principal-sin-premios
+		display: flex
+		flex-direction: column
 	// .principal-header
 	// 	width: 100%
 	// Header
@@ -29,6 +31,8 @@
 		justify-content: flex-start
 		padding: 40px 20px 0
 		position: relative
+		+respond-to(xs)
+			padding: 20px 20px 0
 		&:after
 			background-color: rgba($black,.4)
 			content: ''
@@ -67,6 +71,7 @@
 		width: 150%
 		+respond-to(xs)
 			padding: 40px 74px
+			transform: translateY(80px) translateX(-40px) rotate(-8deg)
 		+respond-to(xx)
 			padding: 20px 60px
 			// transform: translateY(70px) translateX(-40px) rotate(-8deg)

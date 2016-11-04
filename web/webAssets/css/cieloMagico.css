@@ -497,6 +497,9 @@ hr {
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+.principal.principal-sin-premios {
   display: flex;
   flex-direction: column;
 }
@@ -507,6 +510,12 @@ hr {
   justify-content: flex-start;
   padding: 40px 20px 0;
   position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .principal .principal-header {
+    padding: 20px 20px 0;
+  }
 }
 
 .principal .principal-header:after {
@@ -573,6 +582,7 @@ hr {
 @media screen and (max-width: 768px) {
   .principal .principal-texto {
     padding: 40px 74px;
+    transform: translateY(80px) translateX(-40px) rotate(-8deg);
   }
 }
 

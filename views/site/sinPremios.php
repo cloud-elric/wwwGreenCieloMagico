@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 
 <!-- .principal -->
-<div class="principal">
+<div class="principal principal-sin-premios">
 	
 	<!-- .principal-header -->
 	<div class="principal-header">
