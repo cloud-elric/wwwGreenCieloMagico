@@ -15,7 +15,7 @@ $('#registro-form').on(
 			}
 
 		});
-
+var gano = false;
 /**
  * 
  */
@@ -29,6 +29,9 @@ $(document).ready(function(){
 	    });
 	 
 	 $('.js-balloon').on('click', function(e){
+		 
+		 if(!gano){
+		gano = true; 
 		 var audio = new Audio('../webAssets/audio/audio.mp3');
 		 audio.play();
 		 
@@ -39,6 +42,9 @@ $(document).ready(function(){
 		 
 		 pop(e.pageX, e.pageY, 13, $(this), color);
 		 
+		 $('.js-balloon').removeClass('js-balloon');
+		 openModalWin();
+		 }
 	 });
 	
 });

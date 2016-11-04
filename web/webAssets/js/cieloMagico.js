@@ -184,16 +184,16 @@ $(document).ready(function(){
 			$("#js-submit-form").prop('disabled', true);
 		}
 	}
-
-	// 
-	// Consursar
-	// 
-	function openModalWin() {
-		modalWin.style.display = "flex";
-	}
-
+	
 }); // end - READY
 
+
+//
+// Consursar
+// 
+function openModalWin() {
+	modalWin.style.display = "flex";
+}
 
 /**
  * ----------------------------
