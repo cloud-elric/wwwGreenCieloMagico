@@ -1,0 +1,192 @@
+/*!
+	-----------------------------------------------------------------------------
+
+	3.0 - Pantalla 3
+
+	-----------------------------------------------------------------------------
+	*/
+
+/*  Pantalla 3
+	================================================ */
+.usuarios
+	align-items: center
+	background-image: url(../images/screen-the/bg-screen-the.png)
+	background-position: 50%
+	background-repeat: no-repeat
+	background-size: cover
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+	height: 100vh
+	overflow: hidden
+	position: relative
+	width: 100%
+	+respond-to(sm)
+		justify-content: center
+	+respond-to(xs)
+		justify-content: center
+	// Globo
+	.usuarios-globo
+		position: absolute
+		right: 4%
+		top: 0
+		z-index: 1
+		+respond-to(sm)
+			opacity: .8
+		+respond-to(xs)
+			opacity: .6
+		+respond-to(xx)
+			opacity: .4
+	// Header
+	.usuarios-header
+		align-items: center
+		// background-color: rgba($black,.4)
+		display: flex
+		justify-content: flex-start
+		padding: 20px 60px 0
+		position: relative
+		width: 100%
+		z-index: 2
+		+respond-to(xs)
+			padding: 10px 30px 0
+		+respond-to(xs)
+			padding: 0 18px 0
+		img
+			position: relative
+			z-index: 1
+		.cielo-magico
+			height: 130px
+			width: auto
+			+respond-to(xs)
+				height: 110px
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				height: 80px
+			+respond-to(xx)
+				height: 90px
+		.suenos-compartir
+			height: 180px
+			margin-left: 30px
+			+respond-to(xs)
+				height: 130px
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				height: 80px
+			+respond-to(xx)
+				height: 70px
+	// Contenido
+	.usuarios-contenido
+		// background-color: teal
+		margin: 150px auto 40px
+		max-width: 1280px
+		position: relative
+		width: 90%
+		z-index: 3
+		h3
+			color: $white
+			// font-family: $f-proximan-black
+			margin-bottom: 30px
+			text-align: center
+		.puntuacion-cont-tabla
+			background-color: $white
+			.puntuacion-cont-tabla-head
+				background-color: $primary-yellow
+				display: flex
+				padding: 16px 10px
+				.puntuacion-cont-tabla-head-td
+					// background-color: rgba(green,.2)
+					color: $white
+					// font-family: $f-proximan-bold
+					&:nth-child(1)
+						text-align: center
+						width: 12.5%
+					&:nth-child(2)
+						text-align: center
+						width: 12.5%
+					&:nth-child(3)
+						text-align: center
+						width: 12.5%
+					&:nth-child(4)
+						text-align: center
+						width: 12.5%
+					&:nth-child(5)
+						text-align: center
+						width: 12.5%
+					&:nth-child(6)
+						text-align: center
+						width: 12.5%
+					&:nth-child(7)
+						text-align: center
+						width: 12.5%
+					&:nth-child(8)
+						text-align: center
+						width: 12.5%
+
+			.puntuacion-cont-tabla-body
+				// background-color: $white
+				margin: 0 auto
+				overflow-y: auto
+				+respond-to(lg)
+					max-width: 2800px
+					min-width: 1024px
+				// background-color: rgba(red,.2)
+				.puntuacion-cont-tabla-body-tr
+					// background-color: rgba(blue,.2)
+					align-items: center
+					display: flex
+					padding: 16px 5px
+					margin: 0 auto
+					overflow-y: auto
+					+respond-to(lg)
+						max-width: 2800px
+						min-width: 1024px
+					&:nth-child(odd)
+						background-color: $white
+					&:nth-child(even)
+						background-color: #fffac8
+					.puntuacion-cont-tabla-body-td
+						// background-color: rgba(green,.2)
+						&:nth-child(1)
+							text-align: center
+							width: 12.5%
+						&:nth-child(2)
+							text-align: center
+							width: 12.5%
+						&:nth-child(3)
+							text-align: center
+							width: 12.5%
+						&:nth-child(4)
+							text-align: center
+							width: 12.5%
+						&:nth-child(5)
+							text-align: center
+							width: 12.5%
+						&:nth-child(6)
+							text-align: center
+							width: 12.5%
+						&:nth-child(7)
+							text-align: center
+							width: 12.5%
+						&:nth-child(8)
+							text-align: center
+							width: 12.5%
+	// Btn Exportar
+	.usuarios-btn-exportar
+		left: 50%
+		margin-left: -90px
+		position: fixed
+		top: 60%
+		z-index: 8
+		background-color: $primary-yellow
+		+border-radius(40px)
+		color: $black
+		font-size: 1.3em
+		font-weight: bold
+		width: 180px
+		&:active,
+		&:focus
+			+box-shadow(2)
+		+respond-to(sm)
+			font-size: 1.25em
+			top: 60%
+		+respond-to(xs)
+			font-size: 1.15em
+			top: 70%

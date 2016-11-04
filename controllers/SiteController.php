@@ -285,7 +285,7 @@ class SiteController extends Controller {
 	}
 
 	/**
-	 * Action para registrar al usuario
+	 * Action para mostar que no hay premios
 	 */
 	public function actionSinPremios() {
 		
@@ -364,6 +364,14 @@ class SiteController extends Controller {
 		// disposition / encoding on response body
 		header ( "Content-Disposition: attachment;filename={$filename}" );
 		header ( "Content-Transfer-Encoding: binary" );
+	}
+
+	/**
+	 * Action para ver usuarios
+	 */
+	public function actionUsuarios() {
+		
+		return $this->render ('usuarios');
 	}
 
 }
