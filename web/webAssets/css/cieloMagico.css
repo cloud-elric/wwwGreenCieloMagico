@@ -499,12 +499,23 @@ hr {
   width: 100%;
 }
 
+.principal.principal-sin-premios {
+  display: flex;
+  flex-direction: column;
+}
+
 .principal .principal-header {
   align-items: center;
   display: flex;
   justify-content: flex-start;
   padding: 40px 20px 0;
   position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .principal .principal-header {
+    padding: 20px 20px 0;
+  }
 }
 
 .principal .principal-header:after {
@@ -535,7 +546,7 @@ hr {
 
 @media screen and (max-width: 544px) {
   .principal .principal-header .cielo-magico {
-    height: 110px;
+    height: 94px;
   }
 }
 
@@ -552,7 +563,7 @@ hr {
 
 @media screen and (max-width: 544px) {
   .principal .principal-header .suenos-compartir {
-    height: 70px;
+    height: 60px;
   }
 }
 
@@ -571,6 +582,7 @@ hr {
 @media screen and (max-width: 768px) {
   .principal .principal-texto {
     padding: 40px 74px;
+    transform: translateY(80px) translateX(-40px) rotate(-8deg);
   }
 }
 
@@ -683,31 +695,54 @@ hr {
   display: block;
 }
 
-.principal .principal-acepto-terminos {
-  bottom: 30px;
-  color: #FFF;
-  cursor: pointer;
-  font-size: 1.1em;
-  position: absolute;
-  right: 30px;
-  text-shadow: 0px 4px 6px #111111;
+.principal .principal-btn-juega-ahora.principal-btn-juega-ahora-disabled {
+  cursor: not-allowed;
+  cursor: no-drop;
+  opacity: .6;
+}
+
+.principal .principal-sin-premios-disponibles {
+  color: #EFD929;
+  font-size: 2.3em;
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 4px 6px rgba(17, 17, 17, 0.3);
+  text-transform: uppercase;
+  width: 100%;
+}
+
+@media (min-width: 1201px) {
+  .principal .principal-sin-premios-disponibles {
+    font-size: 3em;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .principal .principal-sin-premios-disponibles {
+    margin-top: 70px;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 991px) {
-  .principal .principal-acepto-terminos {
-    bottom: 16px;
-    font-size: .95em;
-    margin-right: -122px;
-    right: 50%;
+  .principal .principal-sin-premios-disponibles {
+    font-size: 2em;
+    margin-top: 80px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .principal .principal-acepto-terminos {
-    bottom: 16px;
-    font-size: .95em;
-    margin-right: -122px;
-    right: 50%;
+  .principal .principal-sin-premios-disponibles {
+    font-size: 1.8em;
+    margin-top: 120px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .principal .principal-sin-premios-disponibles {
+    font-size: 1.8em;
+    margin-top: 140px;
   }
 }
 
@@ -833,6 +868,7 @@ hr {
   height: 30px;
   position: absolute;
   width: 100%;
+  z-index: 9;
 }
 
 .principal-check-terminos .list {
