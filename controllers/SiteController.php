@@ -113,7 +113,7 @@ class SiteController extends Controller {
 					
 					if ($premioUsuario->save ()) {
 						
-						$link = Yii::$app->urlManager->createAbsoluteUrl ( [ 
+						$urlCorta = Yii::$app->urlManager->createAbsoluteUrl ( [ 
 								'site/premio?token=' . $premioUsuario->txt_codigo 
 						] );
 						
@@ -132,10 +132,10 @@ class SiteController extends Controller {
 						
 						// $urlCorta = $this->getShortUrl ( $link );
 						
-						// $message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
-						// $url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
+						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
+						$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
 						
-						// $sms = file_get_contents ( $url );
+						$sms = file_get_contents ( $url );
 						
 						return $this->redirect ( [ 
 								'premio',
@@ -290,6 +290,80 @@ class SiteController extends Controller {
 	public function actionSinPremios() {
 		
 		return $this->render ('sinPremios');
+	}
+	
+	/**
+	 * Usuarios registrados
+	 */
+	public function actionUsuarios87hdk738jahhk89Registrados(){
+		$registros = EntUsuarios::find ()->all ();
+	}
+	
+/**
+	 * Descarga todos los registros de usuarios
+	 */
+	public function actionDescargarRegistros() {
+		$registros = EntUsuarios::find ()->all ();
+		
+		$array = [ ];
+		$i = 0;
+		foreach ( $registros as $registro ) {
+			$premioGanado = $registro->relUsuariosPremios;
+			$array [$i] ['Nombre'] = $registro->txt_nombre;
+			$array [$i] ['Apellido'] = $registro->txt_apellido_paterno;
+			$array [$i] ['Email'] = $registro->txt_email;
+			$array [$i] ['cp'] = $registro->txt_cp;
+			$array [$i] ['telefono'] = $registro->tel_numero_celular;
+			$array [$i] ['fch'] = $registro->fch_creacion;
+			$array [$i] ['fch_nacimiento'] = $registro->fch_nacimiento;
+			$array [$i] ['codigo'] = $premioGanado->txt_codigo;
+			$array [$i] ['premio'] = $premioGanado->idPremio->txt_nombre;
+			$i ++;
+		}
+		
+		$this->downloadSendHeaders ( 'registros.csv' );
+		
+		$this->array2CSV ( $array );
+		
+		exit ();
+	}
+	private function array2CSV($array) {
+		if (count ( $array ) == 0) {
+			return null;
+		}
+		
+		$df = fopen ( "php://output", 'w' );
+		fputcsv ( $df, [ 
+				'Nombre',
+				'Apellido paterno',
+				'Email',
+				'Codigo postal',
+				'Telefono',
+				'Fecha de registro',
+				'Feha de nacimiento',
+				'Codigo ganador',
+				'Premio'
+		] );
+		foreach ( $array as $row ) {
+			fputcsv ( $df, $row );
+		}
+		fclose ( $df );
+	}
+	private function downloadSendHeaders($filename) {
+		// disable caching
+		$now = gmdate ( "D, d M Y H:i:s" );
+		// header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+		header ( "Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate" );
+		header ( "Last-Modified: {$now} GMT" );
+		
+		// force download
+		header ( "Content-Type: application/force-download" );
+		header ( "Content-Type: application/octet-stream" );
+		header ( "Content-Type: application/download" );
+		
+		// disposition / encoding on response body
+		header ( "Content-Disposition: attachment;filename={$filename}" );
+		header ( "Content-Transfer-Encoding: binary" );
 	}
 
 }

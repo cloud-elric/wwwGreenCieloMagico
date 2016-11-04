@@ -60,4 +60,20 @@ class EntUsuarios extends \yii\db\ActiveRecord
             'fch_nacimiento' => 'Fecha de Nacimiento',
         ];
     }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRelUsuariosPremios()
+    {
+    	return $this->hasOne(RelUsuariosPremio::className(), ['id_usuario' => 'id_usuario']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdPremios()
+    {
+    	return $this->hasMany(EntPremios::className(), ['id_premio' => 'id_premio'])->viaTable('rel_usuarios_premio', ['id_usuario' => 'id_usuario']);
+    }
 }
