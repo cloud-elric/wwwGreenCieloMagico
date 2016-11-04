@@ -14,6 +14,7 @@ use app\models\ViewTotalPremios;
 use app\models\RelUsuariosPremio;
 use app\models\EntPremios;
 use app\models\WrkPremiosGanados;
+use app\models\ViewTotalRestanteDia;
 
 class SiteController extends Controller {
 	/**
@@ -77,14 +78,10 @@ class SiteController extends Controller {
 	 * Vista con los 3 globos
 	 */
 	public function actionConcursar() {
-		$premios = ViewTotalPremios::find ()->where ( 'num_premios_sobrantes > 0' )->orderBy ( 'rand()' )->one();
-		
-		if(empty($premios)){
-			return $this->render(['sinPremios']);
-		}
-		
-		
-		
+		$premios = ViewTotalRestanteDia::find ()->where ( 'num_restantes_dia > 0' )->orderBy ( 'rand()' )->one ();
+		$session = Yii::$app->session;
+		// $session->set('premio', '');
+		// exit;
 		$premioSeleccionado = new EntPremios ();
 		
 		if ($premioSeleccionado->load ( Yii::$app->request->post () ) && ($premio = $this->getPremioByToken ( $premioSeleccionado->txt_token ))) {
@@ -107,12 +104,25 @@ class SiteController extends Controller {
 								'site/premio?token=' . $premioUsuario->txt_codigo 
 						] );
 						
-						$urlCorta = $this->getShortUrl ( $link );
+						$existeProducto = $session->get ( 'premio' );
 						
-						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
-						$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
+						if ($existeProducto) {
+							
+							$borrarTemporal = WrkPremiosGanados::find ()->where ( [ 
+									'id_premio_ganado' => $existeProducto 
+							] )->one ();
+							$borrarTemporal->delete ();
+							$session->set ( 'premio', '' );
+						}
 						
-						$sms = file_get_contents ( $url );
+						$session->set ( 'premio', '' );
+						
+						// $urlCorta = $this->getShortUrl ( $link );
+						
+						// $message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
+						// $url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
+						
+						// $sms = file_get_contents ( $url );
 						
 						return $this->redirect ( [ 
 								'premio',
@@ -127,6 +137,30 @@ class SiteController extends Controller {
 					'premio' => $premio 
 			] );
 		}
+		
+		$existeProducto = $session->get ( 'premio' );
+		
+		if ($existeProducto) {
+			
+			$borrarTemporal = WrkPremiosGanados::find ()->where ( [ 
+					'id_premio_ganado' => $existeProducto 
+			] )->one ();
+			$borrarTemporal->delete ();
+			$session->set ( 'premio', '' );
+		}
+		
+		if (empty ( $premios )) {
+			return $this->render ( [ 
+					'sinPremios' 
+			] );
+		}
+		
+		$apartarPremio = new WrkPremiosGanados ();
+		$apartarPremio->id_premio = $premios->id_premio;
+		$apartarPremio->txt_token = Utils::generateToken ( 'preg' );
+		$apartarPremio->save ();
+		
+		$session->set ( 'premio', $apartarPremio->id_premio_ganado );
 		
 		return $this->render ( 'concursar', [ 
 				'premios' => $premios,
@@ -143,7 +177,7 @@ class SiteController extends Controller {
 	
 	/**
 	 * Obtiene un short url a partir de una url dada
-	 * 
+	 *
 	 * @param unknown $url        	
 	 */
 	private function getShortUrl($url) {
@@ -154,8 +188,8 @@ class SiteController extends Controller {
 		curl_setopt ( $ch, CURLOPT_URL, $urlAutenticate );
 		curl_setopt ( $ch, CURLOPT_CUSTOMREQUEST, 'POST' );
 		curl_setopt ( $ch, CURLOPT_POSTFIELDS, 'user=userCieloMagico&pass=passPCieloMagico&app=cieloMagico&url=' . $url );
-		curl_setopt($ch, CURLOPT_POSTREDIR, 3);
-		curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
+		curl_setopt ( $ch, CURLOPT_POSTREDIR, 3 );
+		curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, true );
 		
 		// in real life you should use something like:
 		// curl_setopt($ch, CURLOPT_POSTFIELDS,
