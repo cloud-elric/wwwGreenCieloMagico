@@ -43,6 +43,7 @@ $(document).ready(function(){
 		 pop(e.pageX, e.pageY, 13, $(this), color);
 		 
 		 $('.js-balloon').removeClass('js-balloon');
+		 openModalWin();
 		 }
 	 });
 	

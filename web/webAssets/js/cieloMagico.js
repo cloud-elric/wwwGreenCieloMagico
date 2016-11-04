@@ -175,21 +175,21 @@ $(document).ready(function(){
 		}
 	}
 
-	// 
-	// Consursar
-	// 
-	function openModalWin() {
-		modalWin.style.display = "flex";
-	}
-	
-	// Close Modal
-	$(closeWin).on("click", function(){
-		modalWin.style.display = "none";
-	});
-
 
 }); // end - READY
 
+
+//
+// Consursar
+// 
+function openModalWin() {
+	modalWin.style.display = "flex";
+}
+
+// Close Modal
+$(closeWin).on("click", function(){
+	modalWin.style.display = "none";
+});
 
 /**
  * ----------------------------

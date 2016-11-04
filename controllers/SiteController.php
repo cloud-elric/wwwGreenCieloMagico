@@ -13,6 +13,7 @@ use app\models\Utils;
 use app\models\ViewTotalPremios;
 use app\models\RelUsuariosPremio;
 use app\models\EntPremios;
+use app\models\WrkPremiosGanados;
 
 class SiteController extends Controller {
 	/**
@@ -76,7 +77,14 @@ class SiteController extends Controller {
 	 * Vista con los 3 globos
 	 */
 	public function actionConcursar() {
-		$premios = ViewTotalPremios::find ()->where ( 'num_premios_sobrantes > 0' )->orderBy ( 'rand()' )->limit ( 3 )->all ();
+		$premios = ViewTotalPremios::find ()->where ( 'num_premios_sobrantes > 0' )->orderBy ( 'rand()' )->one();
+		
+		if(empty($premios)){
+			return $this->render(['sinPremios']);
+		}
+		
+		
+		
 		$premioSeleccionado = new EntPremios ();
 		
 		if ($premioSeleccionado->load ( Yii::$app->request->post () ) && ($premio = $this->getPremioByToken ( $premioSeleccionado->txt_token ))) {
@@ -99,7 +107,9 @@ class SiteController extends Controller {
 								'site/premio?token=' . $premioUsuario->txt_codigo 
 						] );
 						
-						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$link);
+						$urlCorta = $this->getShortUrl ( $link );
+						
+						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
 						$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
 						
 						$sms = file_get_contents ( $url );

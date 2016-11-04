@@ -10,7 +10,7 @@ use yii\helpers\Html;
 ?>
 
 <?php
-$premioSeleccionado->txt_token = 'prem13f8a18f30991042ae86aaf2dee0c06e5818ee2971dc3';
+$premioSeleccionado->txt_token = $premios->txt_token;
 $form = ActiveForm::begin ( [ 
 		'id' => 'item-form',
 		'options' => [ 
@@ -51,22 +51,20 @@ $form = ActiveForm::begin ( [
 	<div class="screen-one-globos">
 		
 		<?php
-		$index = 1;
 		$colores = ['#009de4','#ff48c6', '#cdf421'];
-		foreach ( $premios as $premio ) {
+		for($i=1; $i<=3; $i++ ) {
 			// echo $premio->txt_nombre."<br><br><br>";
 			?>
 		
 		<div class="screen-one-globos-item content">
-			<img class="cielo-magico cielo-magico-ballon-<?=$index?> js-balloon"
-				data-color="<?=$colores[$index-1]?>"
-				data-token="<?=$premio->txt_token?>"
-				src="<?=Url::base()?>/webAssets/images/screen-one/globo-<?=$index?>.png"
-				alt="Globo <?=$index?>">
+			<img class="cielo-magico cielo-magico-ballon-<?=$i?> js-balloon"
+				data-color="<?=$colores[$i-1]?>"
+				data-token="<?=$premios->txt_token?>"
+				src="<?=Url::base()?>/webAssets/images/screen-one/globo-<?=$i?>.png"
+				alt="Globo <?=$i?>">
 			<div id="dummy_debris" class="debris"></div>
 		</div>
 		<?php
-			$index ++;
 		}
 		?>
 	</div>
@@ -96,7 +94,7 @@ $form = ActiveForm::begin ( [
 			
 			<h3>¡Felicidades! <span>Haz ganado</span></h4>
 
-			<h2>Pluma dorada para BOOK'S</h2>
+			<h2><?=$premios->txt_nombre?></h2>
 
 			<!-- .screen-one-btn-canjea-premio -->
 			<?= Html::submitButton('<span class="ladda-label">Canjea tu premio</span>', ['id'=>'js-canjea-tu-premio', 'class' => 'btn screen-one-btn-canjea-premio ladda-button', 'data-style'=>'zoom-out'])?>
