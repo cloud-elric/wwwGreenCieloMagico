@@ -48,9 +48,9 @@
 		width: 100%
 		z-index: 2
 		+respond-to(xs)
-			padding: 20px 30px 0
+			padding: 10px 30px 0
 		+respond-to(xs)
-			padding: 20px 18px 0
+			padding: 0 18px 0
 		img
 			position: relative
 			z-index: 1
@@ -59,6 +59,8 @@
 			width: auto
 			+respond-to(xs)
 				height: 110px
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				height: 80px
 			+respond-to(xx)
 				height: 90px
 		.suenos-compartir
@@ -66,6 +68,8 @@
 			margin-left: 30px
 			+respond-to(xs)
 				height: 130px
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				height: 80px
 			+respond-to(xx)
 				height: 70px
 	// Contenido
@@ -88,6 +92,8 @@
 			font-weight: 700
 			+respond-to(xs)
 				font-size: 3.6em
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				font-size: 2.7em
 			+respond-to(xx)
 				font-size: 2.5em
 		h4
@@ -95,12 +101,16 @@
 			font-weight: 700
 			+respond-to(xs)
 				font-size: 1.05em
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				font-size: .9em
 			+respond-to(xx)
 				font-size: 1em
 		// Código
 		.screen-the-contenido-codigo
 			margin-top: 40px
 			text-align: center
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				margin-top: 20px
 			span
 				color: $primary-yellow
 				display: block
@@ -109,6 +119,8 @@
 				text-transform: uppercase
 				+respond-to(xs)
 					font-size: 1.4em
+				@media screen and (max-device-width: 768px) and (orientation : landscape)
+					font-size: 1em
 			p
 				font-size: 2.5em
 				font-weight: 400
@@ -116,6 +128,9 @@
 				text-transform: uppercase
 				+respond-to(xs)
 					font-size: 2em
+				@media screen and (max-device-width: 768px) and (orientation : landscape)
+					font-size: 1.6em
+					margin-top: 0
 	// Footer
 	.screen-the-foooter
 		align-items: center
@@ -125,9 +140,12 @@
 		position: relative
 		width: 100%
 		z-index: 2
+		+respond-to(xs)
+			padding: 0 10px
 		+respond-to(xx)
 			flex-wrap: wrap
 			justify-content: center
+			padding: 0 6px
 		.screen-the-foooter-facebook
 			align-items: center
 			color: $white
@@ -154,6 +172,8 @@
 				margin-left: 8px
 				+respond-to(xs)
 					font-size: 1.1em
+				@media screen and (max-device-width: 768px) and (orientation : landscape)
+					font-size: .94em
 		.screen-the-foooter-nota
 			align-items: center
 			color: $white
@@ -161,6 +181,8 @@
 			justify-content: flex-end
 			+respond-to(xs)
 				width: 50%
+			@media screen and (max-device-width: 768px) and (orientation : landscape)
+				width: 75%
 			+respond-to(xx)
 				justify-content: center
 				margin-top: 10px
@@ -173,3 +195,6 @@
 				+respond-to(xs)
 					font-size: 1em
 					max-width: auto
+				@media screen and (max-device-width: 768px) and (orientation : landscape)
+					font-size: .9em
+					padding-right: 6px
