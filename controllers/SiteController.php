@@ -71,6 +71,18 @@ class SiteController extends Controller {
 	 * @return string
 	 */
 	public function actionIndex() {
+		$session = Yii::$app->session;
+		$existeProducto = $session->get ( 'premio' );
+		if ($existeProducto) {
+				
+			$borrarTemporal = WrkPremiosGanados::find ()->where ( [
+					'id_premio_ganado' => $existeProducto
+			] )->one ();
+			$borrarTemporal->delete ();
+			$session->set ( 'premio', '' );
+		}
+		
+		$session->set ( 'premio', '' );
 		return $this->render ( 'index' );
 	}
 	

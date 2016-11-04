@@ -37,6 +37,8 @@ var openWin = document.getElementById('modal-consursar-open');
  */
 $(document).ready(function(){
 
+	$("#checkbox").prop( "checked", false );
+	
 	/**
 	 * Animsition
 	 */
@@ -50,6 +52,13 @@ $(document).ready(function(){
 	// Deshabilitar btn de Juega ahora (Registro)
 	$("#js-submit-form").attr("disabled", "disabled");
 
+	$("#principal-btn-juega-ahora").on('click', function(){
+		if(!$("#checkbox").is(':checked')) {
+			modalTerminosCondiciones.style.display = "flex";
+		}
+		
+	});
+	
 	/**
 	 * Ladda
 	 */
