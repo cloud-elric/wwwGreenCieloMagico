@@ -17,6 +17,10 @@
 	overflow: hidden
 	position: relative
 	width: 100%
+	display: flex
+	flex-direction: column
+	// .principal-header
+	// 	width: 100%
 	// Header
 	.principal-header
 		align-items: center
@@ -65,6 +69,7 @@
 			padding: 40px 74px
 		+respond-to(xx)
 			padding: 20px 60px
+			// transform: translateY(70px) translateX(-40px) rotate(-8deg)
 		p
 			// background-color: rgba(red,.3)
 			color: $white
@@ -125,27 +130,67 @@
 			width: 224px
 		span
 			display: block
+		&.principal-btn-juega-ahora-disabled
+			cursor: not-allowed
+			cursor: no-drop
+			opacity: .6
 	// Acepto términos
-	.principal-acepto-terminos
-		// background-color: rgba(green,.3)
-		bottom: 30px
-		color: $white
-		cursor: pointer
-		font-size: 1.1em
-		position: absolute
-		right: 30px
-		text-shadow: 0px 4px 6px rgba($black, 1)
+	// .principal-acepto-terminos
+	// 	// background-color: rgba(green,.3)
+	// 	bottom: 30px
+	// 	color: $white
+	// 	cursor: pointer
+	// 	font-size: 1.1em
+	// 	position: absolute
+	// 	right: 30px
+	// 	text-shadow: 0px 4px 6px rgba($black, 1)
+	// 	+respond-to(sm)
+	// 		bottom: 16px
+	// 		font-size: .95em
+	// 		margin-right: -122px
+	// 		right: 50%
+	// 	+respond-to(xs)
+	// 		bottom: 16px
+	// 		font-size: .95em
+	// 		margin-right: -122px
+	// 		right: 50%
+	// Sin premios Disponibles
+	.principal-sin-premios-disponibles
+		// background-color: rgba(red,.2)
+		// bottom: 20px
+		color: $primary-yellow
+		font-size: 2.3em
+		font-weight: 700
+		// left: 50%
+		// margin-left: -280px
+		position: relative
+		text-align: center
+		text-shadow: 0px 4px 6px rgba($black, .3)
+		text-transform: uppercase
+		width: 100%
+		+respond-to(lg)
+			// bottom: 20px
+			font-size: 3em
+			margin-top: 60px
+			// margin-left: -400px
+			// width: 800px
+		+respond-to(md)
+			margin-top: 70px
 		+respond-to(sm)
-			bottom: 16px
-			font-size: .95em
-			margin-right: -122px
-			right: 50%
+			// align-self: flex-end
+			font-size: 2em
+			margin-top: 80px
+			// width: 560px
 		+respond-to(xs)
-			bottom: 16px
-			font-size: .95em
-			margin-right: -122px
-			right: 50%
-
+			// align-self: flex-end
+			font-size: 1.8em
+			margin-top: 120px
+			// margin-left: -48%
+			// width: 96%
+		+respond-to(xx)
+			// align-self: flex-end
+			font-size: 1.8em
+			margin-top: 140px
 
 /*  Aviso de Privacidad y Terminos y Condiciones
 	================================================ */
@@ -231,6 +276,7 @@
 		height: 30px
 		position: absolute
 		width: 100%
+		z-index: 9
 	// Checkbox - Terminos y condiciones
 	.list
 		// background-color: white

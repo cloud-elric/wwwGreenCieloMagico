@@ -52,9 +52,8 @@ use yii\helpers\Url;
 	</div>
 
 	<!-- .principal-btn-juega-ahora -->
-	<!-- <a class="btn principal-btn-juega-ahora" href="site/concursar">¡Juega ahora! <span>Todos tienen premio</span></a> -->
-	<button class="btn principal-btn-juega-ahora ladda-button" id="principal-btn-juega-ahora" data-style="zoom-out"><span class="ladda-label">¡Juega ahora! <span>Todos tienen premio</span></span></button>
-	<!-- end - .principal-btn-juega-ahora -->
+	<a class="btn principal-btn-juega-ahora ladda-button" id="principal-btn-juega-ahora" data-style="zoom-out" href="site/concursar"><span class="ladda-label">¡Juega ahora! <span>Todos tienen premio</span></span></a>
+	
 
 </div>
 <!-- end - .principal -->

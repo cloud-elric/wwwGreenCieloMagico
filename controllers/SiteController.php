@@ -174,4 +174,13 @@ class SiteController extends Controller {
 	public function actionToken($pre = 'prem') {
 		echo Utils::generateToken ( $pre );
 	}
+
+	/**
+	 * Action para registrar al usuario
+	 */
+	public function actionSinPremios() {
+		
+		return $this->render ('sinPremios');
+	}
+
 }

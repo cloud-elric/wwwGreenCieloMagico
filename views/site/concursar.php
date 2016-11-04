@@ -84,13 +84,6 @@ $form = ActiveForm::begin ( [
 	<!-- .modal-content -->
 	<div class="modal-content">
 
-		<!-- .modal-header -->
-		<!-- <div class="modal-header">
-			<span class="close" id="modal-consursar-close">×</span>
-			<h2>Términos y condiciones</h2>
-		</div> -->
-		<!-- end - .modal-header -->
-
 		<!-- .modal-body -->
 		<div class="modal-body">
 			

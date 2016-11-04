@@ -23,7 +23,6 @@ var openTerminosCondiciones = document.getElementById('modal-terminos-condicione
 
 // modal concursar - felicidades ganaste
 var modalWin = document.getElementById('modal-consursar');
-var closeWin = document.getElementById('modal-consursar-close');
 var openWin = document.getElementById('modal-consursar-open');
 
 /**
@@ -45,7 +44,9 @@ $(document).ready(function(){
 
 
 	// Deshabilitar btn de Juega ahora (Principal)
-	$("#principal-btn-juega-ahora").attr("disabled", "disabled");
+	// $("#principal-btn-juega-ahora").attr('disabled', true);
+	$("#principal-btn-juega-ahora").removeAttr("href");
+	$("#principal-btn-juega-ahora").addClass("principal-btn-juega-ahora-disabled");
 	// Deshabilitar btn de Juega ahora (Registro)
 	$("#js-submit-form").attr("disabled", "disabled");
 
@@ -94,7 +95,12 @@ $(document).ready(function(){
 	 */
 	$(".aceptar-terminos-condiciones-btn").on("click", function(){
 		$(".principal-aceptar-mask").hide();
-		$("#principal-btn-juega-ahora").prop('disabled', false);
+		// $("#principal-btn-juega-ahora").prop('disabled', false);
+
+		$("#principal-btn-juega-ahora").removeClass("principal-btn-juega-ahora-disabled");
+		$("#principal-btn-juega-ahora").attr("href", "site/concursar");
+
+		
 		$("#checkbox").prop( "checked", true );
 		modalTerminosCondiciones.style.display = "none";
 	});
@@ -119,10 +125,14 @@ $(document).ready(function(){
 	 */
 	function estadoCheckedPrincipal(){
 		if($("#checkbox").is(':checked')) {
-			$("#principal-btn-juega-ahora").prop('disabled', false);
+			// $("#principal-btn-juega-ahora").prop('disabled', false);
+			$("#principal-btn-juega-ahora").removeClass("principal-btn-juega-ahora-disabled");
+			$("#principal-btn-juega-ahora").attr("href", "site/concursar");
 		} else {
 			$(".principal-aceptar-mask").show();
-			$("#principal-btn-juega-ahora").prop('disabled', true);
+			// $("#principal-btn-juega-ahora").prop('disabled', true);
+			$("#principal-btn-juega-ahora").addClass("principal-btn-juega-ahora-disabled");
+			$("#principal-btn-juega-ahora").removeAttr("href");
 		}
 	}
 
@@ -181,12 +191,6 @@ $(document).ready(function(){
 	function openModalWin() {
 		modalWin.style.display = "flex";
 	}
-	
-	// Close Modal
-	$(closeWin).on("click", function(){
-		modalWin.style.display = "none";
-	});
-
 
 }); // end - READY
 
@@ -203,10 +207,5 @@ window.onclick = function(event) {
 	// Modal Agregar - Close
 	if (event.target == modalTerminosCondiciones) {
 		modalTerminosCondiciones.style.display = "none";
-	}
-
-	// Modal Consurar - Close
-	if (event.target == modalWin) {
-		modalWin.style.display = "none";
 	}
 }
