@@ -532,6 +532,9 @@ hr {
   transform-origin: left;
   transform: translateY(-16px) translateX(-80px) rotate(-8deg);
   width: 130%;
+  -o-transform: translateY(-16px) translateX(-80px) rotate(-8deg);
+    -o-transform-origin: left;
+    left:0;
 }
 
 @media screen and (max-device-width: 768px) and (orientation: landscape) {

@@ -24,7 +24,7 @@ use yii\helpers\Html;
 	<div class="usuarios-contenido">
 
 
-		<div class="puntuacion-cont-tabla">
+		<!-- <div class="puntuacion-cont-tabla">
 
 			<div class="puntuacion-cont-tabla-head">
 				<div class="puntuacion-cont-tabla-head-td">Nombre</div>
@@ -59,11 +59,11 @@ use yii\helpers\Html;
 
 		</div>
 		
-	</div>
+	</div>-->
 	<!-- end - .usuarios-contenido -->
 
 	<!-- .usuarios-btn-exportar -->
-	<button class="btn usuarios-btn-exportar ladda-button" data-style="zoom-out"><span class="ladda-label">Exportar</span></button>
+	<button class="btn usuarios-btn-exportar ladda-button js-btn-exportar" data-style="zoom-out"><span class="ladda-label">Exportar</span></button>
 
 	
 </div>

@@ -15,6 +15,7 @@ use app\models\RelUsuariosPremio;
 use app\models\EntPremios;
 use app\models\WrkPremiosGanados;
 use app\models\ViewTotalRestanteDia;
+use yii\db\Transaction;
 
 class SiteController extends Controller {
 	/**
@@ -72,11 +73,12 @@ class SiteController extends Controller {
 	 */
 	public function actionIndex() {
 		$session = Yii::$app->session;
+		
 		$existeProducto = $session->get ( 'premio' );
 		if ($existeProducto) {
-				
-			$borrarTemporal = WrkPremiosGanados::find ()->where ( [
-					'id_premio_ganado' => $existeProducto
+			
+			$borrarTemporal = WrkPremiosGanados::find ()->where ( [ 
+					'id_premio_ganado' => $existeProducto 
 			] )->one ();
 			$borrarTemporal->delete ();
 			$session->set ( 'premio', '' );
@@ -90,6 +92,10 @@ class SiteController extends Controller {
 	 * Vista con los 3 globos
 	 */
 	public function actionConcursar() {
+		
+		
+		 $transaction = Yii::$app->db->beginTransaction(Transaction::SERIALIZABLE
+        );
 		$premios = ViewTotalRestanteDia::find ()->where ( 'num_restantes_dia > 0' )->orderBy ( 'rand()' )->one ();
 		$session = Yii::$app->session;
 		// $session->set('premio', '');
@@ -102,7 +108,7 @@ class SiteController extends Controller {
 			
 			if ($usuario->load ( Yii::$app->request->post () )) {
 				$usuario->txt_token = Utils::generateToken ( 'usr_' );
-				$usuario->fch_nacimiento = Utils::changeFormatDateInput($usuario->fch_nacimiento);
+				$usuario->fch_nacimiento = Utils::changeFormatDateInput ( $usuario->fch_nacimiento );
 				$usuario->fch_creacion = Utils::getFechaActual ();
 				if ($usuario->save ()) {
 					
@@ -132,11 +138,12 @@ class SiteController extends Controller {
 						
 						// $urlCorta = $this->getShortUrl ( $link );
 						
-						$message = urlencode ( 'Felicidades haz ganado un '.$premio->txt_nombre.". Tu codigo de ganador es: " .$premioUsuario->txt_codigo." ".$urlCorta);
+						//$message = urlencode ( 'Felicidades haz ganado un ' . $premio->txt_nombre . ". Tu codigo de ganador es: " . $premioUsuario->txt_codigo . " " . $urlCorta );
+						$message = urlencode ( "Felicidades reclama tu premio con el siguiente codigo: " . $premioUsuario->txt_codigo . " " . $urlCorta );
 						$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=' . $usuario->tel_numero_celular;
 						
 						$sms = file_get_contents ( $url );
-						
+						$transaction->commit();
 						return $this->redirect ( [ 
 								'premio',
 								'token' => $premioUsuario->txt_codigo 
@@ -163,9 +170,7 @@ class SiteController extends Controller {
 		}
 		
 		if (empty ( $premios )) {
-			return $this->render ( 
-					'sinPremios' 
-			);
+			return $this->render ( 'sinPremios' );
 		}
 		
 		$apartarPremio = new WrkPremiosGanados ();
@@ -174,7 +179,7 @@ class SiteController extends Controller {
 		$apartarPremio->save ();
 		
 		$session->set ( 'premio', $apartarPremio->id_premio_ganado );
-		
+		$transaction->commit();
 		return $this->render ( 'concursar', [ 
 				'premios' => $premios,
 				'premioSeleccionado' => $premioSeleccionado 
@@ -283,23 +288,23 @@ class SiteController extends Controller {
 	public function actionToken($pre = 'prem') {
 		echo Utils::generateToken ( $pre );
 	}
-
+	
 	/**
 	 * Action para mostar que no hay premios
 	 */
 	public function actionSinPremios() {
-		
-		return $this->render ('sinPremios');
+		return $this->render ( 'sinPremios' );
 	}
 	
 	/**
 	 * Usuarios registrados
 	 */
-	public function actionUsuarios87hdk738jahhk89Registrados(){
-		$registros = EntUsuarios::find ()->all ();
+	public function actionUsuarios87hdk738jahhk89Registrados() {
+		// $registros = EntUsuarios::find ()->all ();
+		return $this->render ( 'usuarios' );
 	}
 	
-/**
+	/**
 	 * Descarga todos los registros de usuarios
 	 */
 	public function actionDescargarRegistros() {
@@ -342,7 +347,7 @@ class SiteController extends Controller {
 				'Fecha de registro',
 				'Feha de nacimiento',
 				'Codigo ganador',
-				'Premio'
+				'Premio' 
 		] );
 		foreach ( $array as $row ) {
 			fputcsv ( $df, $row );
@@ -365,13 +370,19 @@ class SiteController extends Controller {
 		header ( "Content-Disposition: attachment;filename={$filename}" );
 		header ( "Content-Transfer-Encoding: binary" );
 	}
-
+	
 	/**
 	 * Action para ver usuarios
 	 */
 	public function actionUsuarios() {
-		
-		return $this->render ('usuarios');
 	}
-
+	
+	public function actionSend(){
+		$message = urlencode ( 'Felicidades haz ganado un 2X1 Paga tu primer noche y te regalamos la segunda en Fiesta Americana *Hoteles Participantes. Tu codigo de ganador es: 34567 http://participagana.com.mx/cielomagico/web/site/premio?token=7768af11d7 ' );
+		$url = 'http://sms-tecnomovil.com/SvtSendSms?username=PIXERED&password=Pakabululu01&message=' . $message . '&numbers=5534440014';
+		
+		$sms = file_get_contents ( $url );
+		
+		print_r($sms);
+	}
 }

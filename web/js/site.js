@@ -20,6 +20,23 @@ var gano = false;
  * 
  */
 $(document).ready(function() {
+	
+	// Click - Exportar
+	$(".js-btn-exportar").on("click", function(){
+
+		var l = Ladda.create(this);
+	 	l.start();
+	 	window.location='descargar-registros';
+	 	setTimeout(function(){
+	 		l.stop();
+	 	}, 2000)
+	 	
+	 	
+	 	//l.stop();
+	 	
+	});
+	
+	
 	$("#entusuarios-tel_numero_celular").keydown(function(e) {
 		validarSoloNumeros(e);
 	});
