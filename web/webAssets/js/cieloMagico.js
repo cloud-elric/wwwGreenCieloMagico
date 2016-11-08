@@ -24,6 +24,12 @@ var openTerminosCondiciones = document
 var modalWin = document.getElementById('modal-consursar');
 var openWin = document.getElementById('modal-consursar-open');
 
+// Modal con premio
+var modalPremio = document
+.getElementById('modal-premio');;
+var closeModalPremio =document
+.getElementById('modal-premio-close');;
+
 /**
  * ---------------------------- Document Ready ----------------------------
  *  - Animsition - Ladda - Modal
@@ -31,6 +37,16 @@ var openWin = document.getElementById('modal-consursar-open');
  */
 $(document).ready(
 		function() {
+			
+			
+			$('.launch-modal').on('click', function(){
+				modalPremio.style.display = "flex";
+				//modalTerminosCondiciones.style.display = "none";
+			});
+			
+			$(closeModalPremio).on('click', function(){
+				modalPremio.style.display = "none";
+			});
 
 			$("#entusuarios-fch_nacimiento")
 					.datepicker(

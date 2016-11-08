@@ -4,6 +4,10 @@ $this->title = 'Premio';
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use app\models\Constantes;
+
+$premio = $usuarioPremio->idPremio;
+
 ?>
 
 
@@ -23,8 +27,11 @@ use yii\helpers\Html;
 	<!-- .screen-the-contenido -->
 	<div class="screen-the-contenido">
 		<h3>¡Felicidades!</h3>
-		<h4>Haz ganado un <?=$usuarioPremio->idPremio->txt_nombre?></h4>
-		
+		<?php if($premio->id_premio==Constantes::ENTRADA || $premio->id_premio==Constantes::VUELO){?>
+			<h4>Haz ganado un <?=$premio->txt_nombre?></h4>
+		<?php }else{?>
+			<h4>Haz ganado un <a class="launch-modal" href='javascript:void(0);'><?=$premio->txt_nombre?></a></h4>
+		<?php }?>	
 		<!-- .screen-the-contenido-codigo -->
 		<div class="screen-the-contenido-codigo">
 			<span>Código</span>
@@ -57,3 +64,32 @@ use yii\helpers\Html;
 
 </div>
 <!-- end - .screen-the -->
+
+<!-- .modal-->
+<div id="modal-premio" 
+	class="modal">
+	<!-- .modal-content -->
+	<div class="modal-content" style="max-width: 95%">
+		<!-- .modal-header -->
+		<div class="modal-header">
+			<span class="close" id="modal-premio-close">×</span>
+			<h2>Premio</h2>
+		</div>
+		<!-- end - .modal-header -->
+
+
+		<!-- .modal-body -->
+		<div class="modal-body" style="padding:0;">
+		
+			<img style="width: 100%" src="<?=Url::base().'/webAssets/images/premios/'.$premio->id_premio.'.png'?>"/>
+			
+			<?php if($premio->id_premio == Constantes::DESAYUNO || $premio->id_premio == Constantes::DESCUENTO_40 || $premio->id_premio == Constantes::DOS_X_UNO){?>
+				<img style="width: 100%" src="<?=Url::base().'/webAssets/images/premios/'.$premio->id_premio.'2.png'?>"/>
+			<?php }?>
+		</div>
+		<!-- end - .modal-body -->
+
+	</div>
+	<!-- end - .modal-content -->
+</div>
+<!-- end - .modal -->

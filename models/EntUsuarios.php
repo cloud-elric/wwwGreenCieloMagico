@@ -35,6 +35,10 @@ class EntUsuarios extends \yii\db\ActiveRecord
         return [
             [['txt_token', 'txt_nombre', 'txt_cp', 'txt_apellido_paterno', 'tel_numero_celular','fch_nacimiento','txt_email'], 'required', 'message'=>'Campo requerido'],
             [['fch_creacion'], 'safe'],
+        	
+    // checks if "username" is a string whose length is between 4 and 24
+    ['tel_numero_celular', 'string', 'length' => [10, 10], 'tooShort' =>'Debe ingresar al menos 10 dígitos'],
+
         	['txt_email', 'email', 'message'=>'Ingrese una dirección válida'],
             [['txt_token'], 'string', 'max' => 60],
             [['txt_nombre', 'txt_email', 'txt_apellido_paterno', 'tel_numero_celular'], 'string', 'max' => 50],
